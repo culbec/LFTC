@@ -12,13 +12,14 @@ _Exemplu_: numere intregi
 - _**neterminalele**_ se scriu ca si cuvinte, fara <\>;
 - _**terminalele**_ sunt scrise intre " si de obicei cu MAJUSCULE: "BEGIN";
 - | - alternanta;
-- [optional\];
+- [optional\] -> 0 or 1;
 - (grupare);
 - {repetare_optionala} -> 0..n;
 - = in loc de ::=;
 - . -> sfarsit de regula;
 
 _Exemplu_: numere intregi
-- IntregFaraSemn = Semn IntregFaraSemn;
-- IntregFaraSemn = Cifra{Cifra};
-- Cifra = "0" | "1" | ... | "9";
+- IntregFaraSemn = Semn IntregFaraSemn.
+- IntregFaraSemn = Cifra{Cifra}.
+- Semn = ["+" | "-"].
+- Cifra = "0" | "1" | ... | "9".
