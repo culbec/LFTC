@@ -11,8 +11,12 @@
             "id": "793e497893b08c5d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Lab1/BNF & EBNF.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Lab1/BNF & EBNF.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Lab1/BNF & EBNF.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Lab1/BNF & EBNF.md"
+              }
             }
           }
         ]
@@ -140,8 +148,9 @@
   },
   "active": "793e497893b08c5d",
   "lastOpenFiles": [
-    "BNF & EBNF.md",
+    "Lab1/Stop - Subset of the Go programming language.md",
     "Lab1/BNF & EBNF.md",
+    "BNF & EBNF.md",
     "Lab1"
   ]
 }
