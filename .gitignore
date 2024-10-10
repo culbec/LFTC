@@ -1,11 +1,11 @@
 # to exclude Obsidian workspace settings (including plugin and hotkey configurations)
-*/\.obsidian/*
+.obsidian/*
 
 # OR only to exclude workspace cache
-*/\.obsidian/workspace/*
+.obsidian/workspace/*
 
 # Exclude plugins
-*/\.obsidian/plugins/*
+.obsidian/plugins/*
 
 # Exclude consultant specific files "personal"
 05*-*Personal/
@@ -14,7 +14,7 @@
 Day*Planners/*
 
 # This file is used to keep track of last auto backup/pull
-*/\.obsidian-git-data
+.obsidian-git-data
 
 # Exclude Untitled Notes
 Untitled*
