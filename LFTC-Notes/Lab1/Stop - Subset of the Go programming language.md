@@ -20,7 +20,7 @@ I chose [EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) 
 		2. **UnsignedInteger** = NonZeroDigit {Digit} .
 	2. **Float** = Digit "." Digit {Digit} .
 	3. **String** = " " " Character {Character} " " " .
-	4. **Struct** =  "struct" "{" {ID Type "stop"} "}" .
+	4. **Struct** =  "type ID struct" "{" {ID Type = CONST "stop"} "}" .
 4. **Program** = "func main ()" "{" InstrList "}" .
 	1. **InstrList** = Instr {InstrList} "stop" .
 	2. **Instr** = Decl | Attr |  IO | Cond | Rep .
@@ -28,7 +28,7 @@ I chose [EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) 
 			1. **Expr** = ID | CONST | ID Op ID | ID Op Const | CONST Op ID | ID Op Expr .
 				1. **Op** = BinaryOp | RelOp .
 					1. **BinaryOp** = "+" | "-" | "%" | "\*" | "/" .
-					2. **RelOp** = "<" | ">" | "<=" | ">=" .
+					2. **RelOp** = "<" | ">" | "<=" | ">=" | "!=" | "\==" .
 		2. **Decl** = "var" ID {"," ID} Type "=" Expr {"," Expr} | ID {"," ID}" ":=" Expr {"," Expr} "stop" . 
 		3. **IO** = "fmt.Scan(&" ID ") stop" | "fmt.Print(" Expr {"," Expr} ") stop" | "fmt.Println(" Expr {"," Expr} ") stop" .
 		4. **Cond** = "if (" LogicStatement ") {" InstrList "}" {"elif (" LogicStatement ") {" InstrList "}"} {"else {" InstrList "}"} .
