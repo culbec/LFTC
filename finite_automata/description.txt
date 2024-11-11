@@ -1,0 +1,6 @@
+Automat
+    stare_initiala: string
+    stari_finale: List<string>
+    stari: List<string>
+    alfabet: List<string>
+    tranzitii: List<List<string, List<string>, string>>
