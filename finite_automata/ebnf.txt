@@ -1,0 +1,6 @@
+File = Alphabet "\n" States "\n" InitialState "\n" FinalStates "\n" Transitions .
+Alphabet = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  | "b" | "B" | "x" | "X" | "a" | "c" | "d" | "e" | "f" | "A" | "C" | "D" | "E" | "F" | "u" | "U" | "l" | "ll" | "L" | "LL" .
+States = "q0" | "q1" | "q2" | "q3" | "q4" | "q5" | "q6" | "q7" | "q8" | "q9" | "q10" | "q11" .
+IntialState = "q0" .
+FinalStates = States {States} .
+Transition = States "," States "," Alphabet .
