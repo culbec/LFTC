@@ -1,7 +1,6 @@
 from typing import List
 from transition import Transition
 
-
 class FA(object):
     def __init__(
         self,
