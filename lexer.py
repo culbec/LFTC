@@ -1,5 +1,6 @@
 import os
 import sys
+import pprint as pp
 
 from lexical_analyzer.hashmap import HashMap as HM
 from lexical_analyzer.tokens import KEYWORDS, SEPARATORS
@@ -35,6 +36,9 @@ def scan_code(code: str):
         # Tokenize the line
         tokens = scanner.tokenize(line)
         line_num = idx + 1
+
+        print(f"Tokens on line {line_num}:")
+        pp.pprint(tokens)
 
         # Exception if line not ends with separator
         if not any(line.endswith(x) for x in SEPARATORS):
