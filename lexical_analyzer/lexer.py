@@ -2,8 +2,8 @@ import os
 import sys
 import pprint as pp
 
-from lexical_analyzer.hashmap import HashMap as HM
-from lexical_analyzer.tokens import KEYWORDS, SEPARATORS
+from hashmap import HashMap as HM
+from tokens import KEYWORDS, SEPARATORS
 from scanner import Scanner
 
 HEADER_TS_ID = ["ID", "Position"]
