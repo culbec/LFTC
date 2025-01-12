@@ -1,0 +1,98 @@
+<Letter> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "_"
+
+<DecimalDigit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<NonZeroDecimalDigit> ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<DecimalDigits> ::= <DecimalDigit> | <DecimalDigit> <DecimalDigits> | <DecimalDigit> "_" <DecimalDigits>
+
+<DecimalExponent> ::= ("e" | "E") | ("e" | "E") ("+" | "-") <DecimalDigits>
+
+<DecimalLit> ::= "0" | <NonZeroDecimalDigit> | ("+" | "-") <NonZeroDecimalDigit> <DecimalDigits> | ("+" | "-") <NonZeroDecimalDigit> "_" <DecimalDigits>
+
+<DecimalFloatlit> ::= <DecimalDigits> "." <DecimalDigits> <DecimalExponent> | 
+                      ("+" | "-") <DecimalDigits> "." <DecimalDigits> |
+                      <DecimalDigits> <DecimalExponent> |
+                      "." <DecimalDigits> <DecimalExponent> |
+                      ("+" | "-") "." <DecimalDigits>
+
+<BinaryDigit> ::= "0" | "1"
+
+<BinaryDigits> ::= <BinaryDigit> | <BinaryDigit> "_" <BinaryDigits>
+
+<BinaryLit> ::= "0" ("b" | "B") <BinaryDigits> | "0" ("b" | "B") "_" <BinaryDigits>
+
+<HexDigit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a" | "b" | "c" | "d" | "e" | "f" | "A" | "B" | "C" | "D" | "E" | "F"
+
+<HexDigits> ::= <HexDigit> | <HexDigit> "_" <HexDigits>
+
+<HexMantissa> ::= <HexDigits> "." <HexDigits> |
+                  <HexDigits> "." |
+                  "_" <HexDigits> "." <HexDigits> |
+                  "_" <HexDigits> "." |
+                  <HexDigits> |
+                  "_" <HexDigits>
+
+<HexExponent> ::= ("p" | "P") <DecimalDigits> | ("p" | "P") ("+" | "-") <DecimalDigits>
+
+<HexLit> ::= "0" ("x" | "X") <HexDigits> | "0" ("x" | "X") "_" <HexDigits>
+
+<HexFloatLit> ::= "0" ("x" | "X") <HexMantissa> <HexExponent>
+
+<OctalDigit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7"
+
+<OctalDigits> ::= <OctalDigit> | <OctalDigit> "_" <OctalDigits>
+
+<OctalLit> ::= "0" <OctalDigits> | "0" "_" <OctalDigits>
+
+<ID> ::= <Letter> | <ID> <Letter> | <ID> <DecimalDigit>
+
+<Int> ::= <DecimalLit> | <OctalLit> | <HexLit> | <BinaryLit>
+
+<Float> ::= <DecimalFloatlit> | <HexFloatLit>
+
+<String> ::= "\"" "\"" | "\"" <StringChar> "\""
+<StringChar> ::= <Letter> | <DecimalDigit> | " " | <StringChar> <Letter> | <StringChar> <DecimalDigit> | <StringChar> " "
+
+<CONST> ::= <Int> | <Float> | <String>
+
+<Program> ::= "func" " "+ "main" " "+ "(" ")" " "+ "{" "\n"+ "}" | "func" " "+ "main" " "+ "(" ")" " "+ "{" "\n"+ <StatementList> "\n"+ "}"
+
+<StatementList> ::= " "* <Statement> | " "* <Statement> <StatementList>
+
+<Statement> ::= <Declaration> " "+ "stop" " "* "\n"+ | <Assignment> " "+ "stop" " "* "\n"+ | <IO> " "+ "stop" " "* "\n"+ | <Cond> | <Rep>
+
+<Assignment> ::= <ID> " "+ "=" " "+ <Expression>
+
+<Expression> ::= <ID> | <CONST> | <ID> <Op> <ID> | <ID> <Op> <CONST> | <CONST> <Op> <ID> | <CONST> <Op> <CONST> | <ID> <Op> <Expression>
+
+<Op> ::= <BinaryOp> | <RelOp>
+
+<BinaryOp> ::= "+" | "-" | "*" | "/" | "%"
+
+<RelOp> ::= "==" | "!=" | "<" | "<=" | ">" | ">="
+
+<Declaration> ::= "var" " "+ <IDList> " "* ":=" " "* <ExprList>
+<IDList> ::= <ID> | <ID> " "* "," " "* <IDList>
+<ExprList> ::= <Expression> | <Expression> " "* "," " "* <ExprList>
+
+<IO> ::= "fmt.Scan" "(" "&" <ID> ")" |
+         "fmt.Print" "(" <ExprList> ")" |
+         "fmt.Println" "(" <ExprList> ")"
+
+<Cond> ::= "if" <IfCond> <CondBody> |
+           "if" <IfCond> <CondBody> <ElifList> |
+           "if" <IfCond> <CondBody> <ElifList> <Else> | 
+           "if" <IfCond> <CondBody> <Else>
+           
+<IfCond> ::= " "+ "(" " "+ <LogicStatement> " "+ ")" " "*
+<CondBody> ::= "{" (" " | "\n")* <StatementList> (" " | "\n")* "}" "\n"+
+<Else> ::= "else" " "+ <CondBody>
+
+<ElifList> ::= "elif" <IfCond> <CondBody> |
+               "elif" <IfCond> <CondBody> <ElifList>
+
+<LogicStatement> ::= <ID> <RelOp> <ID> | <ID> <RelOp> <CONST> | <CONST> <RelOp> <ID> | <CONST> <RelOp> <CONST>
+
+<Rep> ::= "for" <CondBody> |
+          "for" <IfCond> <CondBody>
