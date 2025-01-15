@@ -12,6 +12,7 @@ RESERVED: list[str] = [
     "fmt.Scan",
     "fmt.Print",
     "fmt.Println",
+    "cattimp",
 ]
 OPERATORS: list[str] = [
     "==",
@@ -28,7 +29,7 @@ OPERATORS: list[str] = [
     "/",
     "%",
 ]
-SEPARATORS: list[str] = ["{", "}", "(", ")", ",", " ", "[", "]", "stop"]
+SEPARATORS: list[str] = ["{", "}", "(", ")", ",", " ", "[", "]", "stop", "executa", "sfcattimp"]
 
 all_ = RESERVED + OPERATORS + SEPARATORS
 

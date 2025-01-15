@@ -1,6 +1,6 @@
 import os
 from finite_automata import FA, Transition
-from lexical_analyzer.tokens import *
+from tokens import *
 import time
 
 # Paths to the finite automata files

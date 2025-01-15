@@ -1,0 +1,78 @@
+Program -> FUNC MAIN L_PAREN R_PAREN L_BRACKET R_BRACKET | FUNC MAIN L_PAREN R_PAREN L_BRACKET StatementList R_BRACKET
+FUNC -> "func"
+MAIN -> "main"
+L_PAREN -> "("
+R_PAREN -> ")"
+L_BRACKET -> "{"
+R_BRACKET -> "}"
+StatementList -> Statement | Statement StatementList
+Statement -> Declaration STOP | Assignment STOP | IO STOP | Cond | Rep
+STOP -> "stop"
+Assignment -> ID EQ Expression
+EQ -> "="
+Expression -> ID | CONST | ID Op ID | ID Op CONST | CONST Op ID | CONST Op CONST | ID Op Expression
+Op -> BinaryOp | RelOp
+BinaryOp -> PLUS | MINUS | MUL | DIV | MOD
+PLUS -> "+"
+MINUS -> "-"
+MUL -> "*"
+DIV -> "/"
+MOD -> "%"
+RelOp -> IS_EQUAL | IS_NOT_EQUAL | LESS_THAN | LESS_THAN_EQUAL | GREATER_THAN | GREATER_THAN_EQUAL
+IS_EQUAL -> "=="
+IS_NOT_EQUAL -> "!="
+LESS_THAN -> "<"
+LESS_THAN_EQUAL -> "<="
+GREATER_THAN -> ">"
+GREATER_THAN_EQUAL -> ">="
+Declaration -> VAR IDList DECLARE ExprList
+VAR -> "var"
+DECLARE -> ":="
+IDList -> ID | ID COMMA IDList
+COMMA -> ","
+ExprList -> Expression | Expression COMMA ExprList
+IO -> SCAN L_PAREN AMPERSAND ID R_PAREN | PRINT L_PAREN ExprList R_PAREN | PRINTLN L_PAREN ExprList R_PAREN
+SCAN -> "fmt.Scan"
+PRINT -> "fmt.Print"
+PRINTLN -> "fmt.Println"
+AMPERSAND -> "&"
+Cond -> IF IfCond CondBody | IF IfCond CondBody ElifList | IF IfCond CondBody ElifList Else | IF IfCond CondBody Else
+IF -> "if"
+IfCond -> L_PAREN LogicStatement R_PAREN
+CondBody -> L_BRACKET StatementList R_BRACKET
+Else -> ELSE CondBody
+ELSE -> "else"
+ElifList -> ELIF IfCond CondBody | ELIF IfCond CondBody ElifList
+ELIF -> "elif"
+LogicStatement -> ID RelOp ID | ID RelOp CONST | CONST RelOp ID | CONST RelOp CONST
+Rep -> FOR CondBody | FOR IfCond CondBody
+FOR -> "for"
+Letter -> "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+DecimalDigit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+NonZeroDecimalDigit -> "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+DecimalDigits -> DecimalDigit | DecimalDigit DecimalDigits | DecimalDigit UNDERSCORE DecimalDigits
+UNDERSCORE -> "_"
+DecimalExponent -> DECIMAL_EXPONENT PLUS DecimalDigits | DECIMAL_EXPONENT MINUS DecimalDigits | DECIMAL_EXPONENT PLUS DecimalDigits | DECIMAL_EXPONENT MINUS DecimalDigits
+DECIMAL_EXPONENT -> "e" | "E" 
+DecimalLit -> "0" | NonZeroDecimalDigit | PLUS NonZeroDecimalDigit DecimalDigits | MINUS NonZeroDecimalDigit DecimalDigits | PLUS NonZeroDecimalDigit UNDERSCORE DecimalDigits | MINUS NonZeroDecimalDigit UNDERSCORE DecimalDigits
+DecimalFloatlit -> DecimalDigits DOT DecimalDigits DecimalExponent | PLUS DecimalDigits DOT DecimalDigits | MINUS DecimalDigits "." DecimalDigits | DecimalDigits DecimalExponent | DOT DecimalDigits DecimalExponent | PLUS DOT DecimalDigits | MINUS DOT DecimalDigits
+DOT -> "."
+BinaryDigit -> "0" | "1"
+BinaryDigits -> BinaryDigit | BinaryDigit UNDERSCORE BinaryDigits
+BinaryLit -> "0" "b" BinaryDigits | "0" "B" BinaryDigits | "0" "b" "_" BinaryDigits | "0" "B" "_" BinaryDigits
+HexDigit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a" | "b" | "c" | "d" | "e" | "f" | "A" | "B" | "C" | "D" | "E" | "F"
+HexDigits -> HexDigit | HexDigit UNDERSCORE HexDigits
+HexMantissa -> HexDigits DOT HexDigits | HexDigits DOT | UNDERSCORE HexDigits DOT HexDigits | UNDERSCORE HexDigits DOT | HexDigits | UNDERSCORE HexDigits
+HexExponent -> FLOAT_EXPONENT DecimalDigits | FLOAT_EXPONENT DecimalDigits | FLOAT_EXPONENT PLUS DecimalDigits | FLOAT_EXPONENT PLUS DecimalDigits | FLOAT_EXPONENT MINUS DecimalDigits | FLOAT_EXPONENT MINUS DecimalDigits
+FLOAT_EXPONENT -> "p" | "P"
+HexLit -> "0" "x" HexDigits | "0" "X" HexDigits | "0" "x" UNDERSCORE HexDigits | "0" "X" UNDERSCORE HexDigits
+HexFloatLit -> "0" "x" HexMantissa HexExponent | "0" "X" HexMantissa HexExponent
+OctalDigit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7"
+OctalDigits -> OctalDigit | OctalDigit UNDERSCORE OctalDigits
+OctalLit> -> "0" OctalDigits | "0" UNDERSCORE OctalDigits
+ID -> Letter | ID Letter | ID DecimalDigit
+Int -> DecimalLit | OctalLit | HexLit | BinaryLit
+Float -> DecimalFloatlit | HexFloatLit
+String -> """ """ | """ StringChar """
+StringChar -> Letter | DecimalDigit | " " | StringChar Letter | StringChar DecimalDigit | StringChar " "
+CONST -> Int | Float | String
