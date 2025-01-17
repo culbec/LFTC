@@ -1,0 +1,19 @@
+func main() {
+    var a int = 20 stop
+    var b int = 5 stop
+
+    var c int = a / b stop
+    Println(c) stop
+
+    var d int = a * b stop
+    Println(d) stop
+
+    var e int = c + d stop
+    Println(e) stop
+
+    var s int = a + b / c stop
+    Println(s) stop
+
+    s = d * e - 5 stop
+    Println(s) stop
+}

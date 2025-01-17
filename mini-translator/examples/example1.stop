@@ -1,0 +1,11 @@
+func main() {
+    var a int = 1 stop
+    var b int = 2 stop
+    var c int stop
+
+    Scan(&c) stop
+
+    var s int = a + b * c + 5 stop
+    Println(s) stop
+    Println(c) stop
+}
