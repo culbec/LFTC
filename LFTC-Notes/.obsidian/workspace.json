@@ -4,39 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "43cbbc713169ad51",
+        "id": "322992d57d6e10a0",
         "type": "tabs",
         "children": [
           {
-            "id": "793e497893b08c5d",
+            "id": "2e7a836124f46b89",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Lab1/BNF & EBNF.md",
-                "mode": "source",
-                "source": false
+                "file": "Examen/Seminar7.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "BNF & EBNF"
+              "icon": "excalidraw-icon",
+              "title": "Seminar7.excalidraw"
             }
           },
           {
-            "id": "3b2cc86105642ab1",
+            "id": "487841833496e69f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Lab1/Stop - Subset of the Go programming language.md",
-                "mode": "source",
-                "source": false
+                "file": "Examen/LR(1).excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "Stop - Subset of the Go programming language"
+              "icon": "excalidraw-icon",
+              "title": "LR(1).excalidraw"
+            }
+          },
+          {
+            "id": "88903e5585f56ae3",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Examen/LR(0).excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "LR(0).excalidraw"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -92,7 +100,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 239.5
   },
   "right": {
     "id": "12d56704b7288854",
@@ -174,13 +182,27 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "3b2cc86105642ab1",
+  "active": "88903e5585f56ae3",
   "lastOpenFiles": [
+    "Examen/Examen.xopp~",
+    "Examen/Examen.xopp",
+    "Examen/LR(1).excalidraw.md",
+    "Examen/LR(0).excalidraw.md",
+    "Examen/Seminar7.excalidraw.md",
+    "Examen/Seminar5.excalidraw.md",
+    "Examen/Seminar6.excalidraw.md",
     "Lab1/BNF & EBNF.md",
     "Lab1/Stop - Subset of the Go programming language.md",
+    "Examen/Seminar2.excalidraw.md",
+    "Examen/Seminar3.excalidraw.md",
+    "Examen/Seminar4.excalidraw.md",
+    "Examen/Untitled.md",
+    "Untitled.md",
+    "Examen",
     "BNF & EBNF.md",
     "Lab1"
   ]
